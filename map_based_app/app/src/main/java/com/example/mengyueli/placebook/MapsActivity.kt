@@ -6,8 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.util.Log
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.*
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -26,6 +25,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var map: GoogleMap
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+
+    //private var locationRequest: LocationRequest? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,12 +72,41 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 // 2
             requestLocationPermissions()
         } else {
+
+
+            /*
+            if (locationRequest == null) {
+                locationRequest = LocationRequest.create()
+                locationRequest?.let { locationRequest ->
+                    // 1
+                    locationRequest.priority =
+                            LocationRequest.PRIORITY_HIGH_ACCURACY
+// 2
+                    locationRequest.interval = 5000
+                    // 3
+                    locationRequest.fastestInterval = 1000
+                    // 4
+                    val locationCallback = object : LocationCallback() {
+                        override fun onLocationResult(locationResult: LocationResult?) {
+                            getCurrentLocation()
+                        }
+                    }
+// 5
+                    fusedLocationClient.requestLocationUpdates(locationRequest,
+                            locationCallback, null)
+                }
+            }
+            */
+            map.isMyLocationEnabled = true
 // 3
             fusedLocationClient.lastLocation.addOnCompleteListener {
                 if (it.result != null) {
 // 4
                     val latLng = LatLng(it.result.latitude, it.result.longitude)
                     // 5
+
+                    map.clear()
+
                     map.addMarker(MarkerOptions().position(latLng)
                             .title("You are here!"))
                     // 6
