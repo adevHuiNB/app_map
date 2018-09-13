@@ -1,6 +1,7 @@
 package com.example.mengyueli.placebook.ui
 
 import android.Manifest
+import android.arch.lifecycle.ViewModelProviders
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.support.v7.app.AppCompatActivity
@@ -9,6 +10,7 @@ import android.support.v4.app.ActivityCompat
 import android.util.Log
 import com.example.mengyueli.placebook.R
 import com.example.mengyueli.placebook.adapter.BookmarkInfoWindowAdapter
+import com.example.mengyueli.placebook.viewmodel.MapsViewModel
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.*
@@ -21,10 +23,19 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PointOfInterest
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener {
+
+    private lateinit var mapsViewModel: MapsViewModel
+
+    private fun setupViewModel() {
+        mapsViewModel =
+                ViewModelProviders.of(this).get(MapsViewModel::class.java)
+    }
+
     override fun onConnectionFailed(connectionResult: ConnectionResult) {
         Log.e(TAG, "Google play connection failed: " +
                 connectionResult.errorMessage)
@@ -45,6 +56,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.On
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupGoogleClient()
+
         setContentView(R.layout.activity_maps)
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -52,6 +65,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.On
         mapFragment.getMapAsync(this)
 
         setupLocationClient()
+
     }
 
     /**
@@ -63,9 +77,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.On
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-    override fun onMapReady(googleMap: GoogleMap) {
-        map = googleMap
+
+    private fun setupMapListeners() {
         map.setInfoWindowAdapter(BookmarkInfoWindowAdapter(this))
+        map.setOnPoiClickListener {
+            displayPoi(it)
+        }
+        map.setOnInfoWindowClickListener {
+            handleInfoWindowClick(it)
+        }
+    }
+    override fun onMapReady(googleMap: GoogleMap) {
+
+        map = googleMap
+
+
+        setupMapListeners()
+        setupViewModel()
         getCurrentLocation()
 
         /*map.setOnPoiClickListener {
@@ -73,10 +101,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.On
         }
         */
 
-        setupGoogleClient()
-        map.setOnPoiClickListener {
-            displayPoi(it)
-        }
+
+
+
     }
 
     private fun setupGoogleClient() {
@@ -250,8 +277,22 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.On
                 .title(place.name as String?)
                 .snippet(place.phoneNumber as String?)
         )
-        marker?.tag = photo
+        marker?.tag = PlaceInfo(place, photo)
 
 
     }
+
+    private fun handleInfoWindowClick(marker: Marker) {
+        val placeInfo = (marker.tag as PlaceInfo)
+        if (placeInfo.place != null && placeInfo.image != null) {
+            mapsViewModel.addBookmarkFromPlace(placeInfo.place,
+                    placeInfo.image)
+        }
+        marker.remove()
+    }
+
+
+    class PlaceInfo(val place: Place? = null,
+                     val image: Bitmap? = null)
 }
+

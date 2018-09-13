@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.mengyueli.placebook.R
+import com.example.mengyueli.placebook.ui.MapsActivity
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 
@@ -33,7 +34,8 @@ private val contents: View
         phoneView.text = marker.snippet ?: ""
 
         val imageView = contents.findViewById<ImageView>(R.id.photo)
-        imageView.setImageBitmap(marker.tag as Bitmap?)
+        imageView.setImageBitmap((marker.tag as
+                MapsActivity.PlaceInfo).image)
         return contents
     }
 }
