@@ -26,6 +26,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PointOfInterest
+import kotlinx.coroutines.experimental.CommonPool
+import kotlinx.coroutines.experimental.launch
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener {
 
@@ -285,11 +287,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.On
     private fun handleInfoWindowClick(marker: Marker) {
         val placeInfo = (marker.tag as PlaceInfo)
         if (placeInfo.place != null && placeInfo.image != null) {
-            mapsViewModel.addBookmarkFromPlace(placeInfo.place,
-                    placeInfo.image)
+
+            launch(CommonPool) {
+                mapsViewModel.addBookmarkFromPlace(placeInfo.place,
+                        placeInfo.image)
+
+
+            }
+            marker.remove()
         }
-        marker.remove()
     }
+
 
 
     class PlaceInfo(val place: Place? = null,
