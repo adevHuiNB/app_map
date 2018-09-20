@@ -22,10 +22,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.maps.model.PointOfInterest
+import com.google.android.gms.maps.model.*
 import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.launch
 
@@ -36,6 +33,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.On
     private fun setupViewModel() {
         mapsViewModel =
                 ViewModelProviders.of(this).get(MapsViewModel::class.java)
+        createBookmarkMarkerObserver()
     }
 
     override fun onConnectionFailed(connectionResult: ConnectionResult) {
@@ -167,10 +165,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.On
                     val latLng = LatLng(it.result.latitude, it.result.longitude)
                     // 5
 
-                    map.clear()
+                    //map.clear()
 
-                    map.addMarker(MarkerOptions().position(latLng)
-                            .title("You are here!"))
+                    //map.addMarker(MarkerOptions().position(latLng).title("You are here!"))
                     // 6
                     val update = CameraUpdateFactory.newLatLngZoom(latLng, 16.0f)
                     // 7
@@ -296,6 +293,38 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.On
             }
             marker.remove()
         }
+    }
+
+    private fun addPlaceMarker(
+            bookmark: MapsViewModel.BookmarkMarkerView): Marker? {
+        val marker = map.addMarker(MarkerOptions()
+                .position(bookmark.location)
+                .icon(BitmapDescriptorFactory.defaultMarker(
+                        BitmapDescriptorFactory.HUE_AZURE))
+                .alpha(0.8f))
+        marker.tag = bookmark
+        return marker
+    }
+
+    private fun displayAllBookmarks(
+            bookmarks: List<MapsViewModel.BookmarkMarkerView>) {
+        for (bookmark in bookmarks) {
+            addPlaceMarker(bookmark)
+        }
+    }
+
+    private fun createBookmarkMarkerObserver() {
+        // 1
+        mapsViewModel.getBookmarkMarkerViews()?.observe(
+                this, android.arch.lifecycle
+                .Observer<List<MapsViewModel.BookmarkMarkerView>> {
+                    // 2
+                    map.clear()
+// 3
+                    it?.let {
+                        displayAllBookmarks(it)
+                    }
+                })
     }
 
 

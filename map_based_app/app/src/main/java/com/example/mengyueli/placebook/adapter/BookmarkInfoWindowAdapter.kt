@@ -38,4 +38,7 @@ private val contents: View
                 MapsActivity.PlaceInfo).image)
         return contents
     }
+
+
+
 }
