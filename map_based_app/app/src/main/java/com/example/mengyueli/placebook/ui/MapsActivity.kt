@@ -277,6 +277,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleApiClient.On
                 .snippet(place.phoneNumber as String?)
         )
         marker?.tag = PlaceInfo(place, photo)
+        marker?.showInfoWindow()
 
 
     }

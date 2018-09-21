@@ -75,6 +75,7 @@ class MapsViewModel(application: Application) :
         bookmark.address = place.address.toString()
         // 5
         val newId = bookmarkRepo.addBookmark(bookmark)
+        bookmark.setImage(image, getApplication())
         Log.i(TAG, "New bookmark $newId added to the database.")
     }
 }

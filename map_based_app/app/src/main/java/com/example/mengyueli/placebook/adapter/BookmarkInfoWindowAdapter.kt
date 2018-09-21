@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.mengyueli.placebook.R
 import com.example.mengyueli.placebook.ui.MapsActivity
+import com.example.mengyueli.placebook.viewmodel.MapsViewModel
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 
@@ -28,14 +29,28 @@ private val contents: View
     }
     // 5
     override fun getInfoContents(marker: Marker): View? {
+
         val titleView = contents.findViewById<TextView>(R.id.title)
         titleView.text = marker.title ?: ""
         val phoneView = contents.findViewById<TextView>(R.id.phone)
         phoneView.text = marker.snippet ?: ""
 
         val imageView = contents.findViewById<ImageView>(R.id.photo)
-        imageView.setImageBitmap((marker.tag as
-                MapsActivity.PlaceInfo).image)
+
+        when (marker.tag) {
+            // 1
+            is MapsActivity.PlaceInfo -> {
+                imageView.setImageBitmap(
+                        (marker.tag as MapsActivity.PlaceInfo).image)
+            }
+// 2
+            is MapsViewModel.BookmarkMarkerView -> {
+                var bookMarkview = marker.tag as
+                        MapsViewModel.BookmarkMarkerView
+                // Set imageView bitmap here
+            }
+
+        }
         return contents
     }
 
