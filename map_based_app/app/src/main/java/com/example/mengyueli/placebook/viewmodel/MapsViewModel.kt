@@ -5,10 +5,12 @@ import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Transformations
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.graphics.Bitmap
 import android.util.Log
 import com.example.mengyueli.placebook.model.Bookmark
 import com.example.mengyueli.placebook.repository.BookmarkRepo
+import com.example.mengyueli.placebook.util.ImageUtils
 import com.google.android.gms.location.places.Place
 import com.google.android.gms.maps.model.LatLng
 
@@ -20,6 +22,15 @@ class MapsViewModel(application: Application) :
             var id: Long? = null,
             var location: LatLng = LatLng(0.0, 0.0)
     )
+    {
+        fun getImage(context: Context): Bitmap? {
+            id?.let {
+                return ImageUtils.loadBitmapFromFile(context,
+                        Bookmark.generateImageFilename(it))
+            }
+            return null
+        }
+    }
 
 
     private var bookmarks: LiveData<List<BookmarkMarkerView>>?

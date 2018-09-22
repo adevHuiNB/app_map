@@ -12,7 +12,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 
 
-class BookmarkInfoWindowAdapter(context: Activity) :
+class BookmarkInfoWindowAdapter(val context: Activity) :
         GoogleMap.InfoWindowAdapter {
 // 2
 private val contents: View
@@ -47,7 +47,7 @@ private val contents: View
             is MapsViewModel.BookmarkMarkerView -> {
                 var bookMarkview = marker.tag as
                         MapsViewModel.BookmarkMarkerView
-                // Set imageView bitmap here
+                imageView.setImageBitmap(bookMarkview.getImage(context))
             }
 
         }
