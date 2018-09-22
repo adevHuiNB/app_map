@@ -20,7 +20,9 @@ class MapsViewModel(application: Application) :
 
     data class BookmarkMarkerView(
             var id: Long? = null,
-            var location: LatLng = LatLng(0.0, 0.0)
+            var location: LatLng = LatLng(0.0, 0.0),
+            var name: String = "",
+            var phone: String = ""
     )
     {
         fun getImage(context: Context): Bitmap? {
@@ -47,7 +49,9 @@ class MapsViewModel(application: Application) :
             MapsViewModel.BookmarkMarkerView {
         return MapsViewModel.BookmarkMarkerView(
                 bookmark.id,
-                LatLng(bookmark.latitude, bookmark.longitude))
+                LatLng(bookmark.latitude, bookmark.longitude),
+                bookmark.name,
+                bookmark.phone)
     }
 
     private fun mapBookmarksToMarkerView() {

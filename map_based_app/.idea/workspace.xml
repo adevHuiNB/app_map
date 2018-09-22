@@ -31,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MapsActivity.kt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MapsActivity.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/ui/MapsActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="262" column="16" lean-forward="false" selection-start-line="262" selection-start-column="16" selection-end-line="262" selection-end-column="16" />
+            <state relative-caret-position="100">
+              <caret line="302" column="7" lean-forward="true" selection-start-line="302" selection-start-column="7" selection-end-line="302" selection-end-column="7" />
               <folding>
                 <element signature="e#8549#8609#1" expanded="true" />
                 <element signature="e#8627#8688#1" expanded="true" />
@@ -58,7 +58,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BookmarkInfoWindowAdapter.kt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BookmarkInfoWindowAdapter.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/adapter/BookmarkInfoWindowAdapter.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="630">
@@ -113,8 +113,8 @@
       <file leaf-file-name="MapsViewModel.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/viewmodel/MapsViewModel.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+            <state relative-caret-position="247">
+              <caret line="53" column="30" lean-forward="false" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
               <folding>
                 <element signature="e#51#612#0" expanded="true" />
               </folding>
@@ -2257,15 +2257,16 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/db/PlaceBookDatabase.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/db/BookmarkDao.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/model/Bookmark.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/ui/MapsActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/viewmodel/MapsViewModel.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/util/ImageUtils.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/adapter/BookmarkInfoWindowAdapter.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/viewmodel/MapsViewModel.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/ui/MapsActivity.kt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="591" />
+    <option name="x" value="38" />
+    <option name="y" value="210" />
     <option name="width" value="1400" />
     <option name="height" value="748" />
   </component>
@@ -2538,7 +2539,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="591" width="1400" height="748" extended-state="0" />
+    <frame x="38" y="210" width="1400" height="748" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2736,17 +2737,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/ui/MapsActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="262" column="16" lean-forward="false" selection-start-line="262" selection-start-column="16" selection-end-line="262" selection-end-column="16" />
-          <folding>
-            <element signature="e#8549#8609#1" expanded="true" />
-            <element signature="e#8627#8688#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/Nexus_5X_API_28 [emulator-5554]/data/data/com.example.mengyueli.placebook/files/bookmark6.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -2767,21 +2757,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/adapter/BookmarkInfoWindowAdapter.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/viewmodel/MapsViewModel.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+        <state relative-caret-position="247">
+          <caret line="53" column="30" lean-forward="false" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
           <folding>
             <element signature="e#51#612#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/adapter/BookmarkInfoWindowAdapter.kt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/mengyueli/placebook/ui/MapsActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="100">
+          <caret line="302" column="7" lean-forward="true" selection-start-line="302" selection-start-column="7" selection-end-line="302" selection-end-column="7" />
+          <folding>
+            <element signature="e#8549#8609#1" expanded="true" />
+            <element signature="e#8627#8688#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
