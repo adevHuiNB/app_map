@@ -27,4 +27,9 @@ fun addBookmark(bookmark: Bookmark): Long? {
         get() {
             return bookmarkDao.loadAll()
         }
+
+    fun getLiveBookmark(bookmarkId: Long): LiveData<Bookmark> {
+        val bookmark = bookmarkDao.loadLiveBookmark(bookmarkId)
+        return bookmark
+    }
 }
