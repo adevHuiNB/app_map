@@ -32,4 +32,11 @@ fun addBookmark(bookmark: Bookmark): Long? {
         val bookmark = bookmarkDao.loadLiveBookmark(bookmarkId)
         return bookmark
     }
+
+    fun updateBookmark(bookmark: Bookmark) {
+        bookmarkDao.updateBookmark(bookmark)
+    }
+    fun getBookmark(bookmarkId: Long): Bookmark {
+        return bookmarkDao.loadBookmark(bookmarkId)
+    }
 }
