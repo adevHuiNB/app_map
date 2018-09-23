@@ -19,13 +19,18 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="$USER_HOME$/Desktop/Android_Apprentice_v1.0/17-detail-activity/starter/PlaceBook/app/src/main/res/drawable-xxhdpi/ic_action_done.png" />
+                                      <entry key="imageAsset" value="$USER_HOME$/Desktop/Android_Apprentice_v1.0/18-navigation-and-photos/starter/PlaceBook/app/src/main/res/drawable-hdpi/ic_other.png" />
                                       <entry key="outputName" value="ic_action_done" />
                                     </map>
                                   </option>
                                 </PersistentState>
                               </value>
                             </entry>
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputIconType" value="NOTIFICATION" />
                           </map>
                         </option>
                       </PersistentState>
