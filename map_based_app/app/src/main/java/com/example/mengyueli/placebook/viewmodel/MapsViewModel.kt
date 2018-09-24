@@ -4,7 +4,6 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.Transformations
-import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.Bitmap
 import android.util.Log
@@ -18,7 +17,7 @@ import com.google.android.gms.maps.model.LatLng
 class MapsViewModel(application: Application) :
         AndroidViewModel(application) {
 
-    data class BookmarkMarkerView(
+    data class BookmarkView(
             var id: Long? = null,
             var location: LatLng = LatLng(0.0, 0.0),
             var name: String = "",
@@ -35,7 +34,7 @@ class MapsViewModel(application: Application) :
     }
 
 
-    private var bookmarks: LiveData<List<BookmarkMarkerView>>?
+    private var bookmarks: LiveData<List<BookmarkView>>?
             = null
 
     private val TAG = "MapsViewModel"
@@ -45,22 +44,22 @@ class MapsViewModel(application: Application) :
     // 3
 
 
-    private fun bookmarkToMarkerView(bookmark: Bookmark):
-            MapsViewModel.BookmarkMarkerView {
-        return MapsViewModel.BookmarkMarkerView(
+    private fun bookmarkToBookmarkView(bookmark: Bookmark):
+            MapsViewModel.BookmarkView {
+        return MapsViewModel.BookmarkView(
                 bookmark.id,
                 LatLng(bookmark.latitude, bookmark.longitude),
                 bookmark.name,
                 bookmark.phone)
     }
 
-    private fun mapBookmarksToMarkerView() {
+    private fun mapBookmarksToBookmarkView() {
         // 1
         val allBookmarks = bookmarkRepo.allBookmarks
         // 2
         bookmarks = Transformations.map(allBookmarks) { bookmarks ->
             val bookmarkMarkerViews = bookmarks.map { bookmark ->
-                bookmarkToMarkerView(bookmark)
+                bookmarkToBookmarkView(bookmark)
             }
             bookmarkMarkerViews
         }
@@ -69,10 +68,10 @@ class MapsViewModel(application: Application) :
 
 
 
-    fun getBookmarkMarkerViews() :
-            LiveData<List<BookmarkMarkerView>>? {
+    fun getBookmarkViews() :
+            LiveData<List<BookmarkView>>? {
         if (bookmarks == null) {
-            mapBookmarksToMarkerView()
+            mapBookmarksToBookmarkView()
         }
         return bookmarks
     }

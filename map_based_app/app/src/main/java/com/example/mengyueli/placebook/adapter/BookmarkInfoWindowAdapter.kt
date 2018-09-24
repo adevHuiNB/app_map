@@ -1,7 +1,6 @@
 package com.example.mengyueli.placebook.adapter
 
 import android.app.Activity
-import android.graphics.Bitmap
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -44,9 +43,9 @@ private val contents: View
                         (marker.tag as MapsActivity.PlaceInfo).image)
             }
 // 2
-            is MapsViewModel.BookmarkMarkerView -> {
+            is MapsViewModel.BookmarkView -> {
                 var bookMarkview = marker.tag as
-                        MapsViewModel.BookmarkMarkerView
+                        MapsViewModel.BookmarkView
                 imageView.setImageBitmap(bookMarkview.getImage(context))
             }
 

@@ -13,14 +13,54 @@
                       <PersistentState>
                         <option name="children">
                           <map>
-                            <entry key="notification">
+                            <entry key="actionbar">
                               <value>
                                 <PersistentState>
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="$USER_HOME$/Desktop/Android_Apprentice_v1.0/18-navigation-and-photos/starter/PlaceBook/app/src/main/res/drawable-hdpi/ic_other.png" />
-                                      <entry key="outputName" value="ic_action_done" />
+                                      <entry key="imageAsset" value="$USER_HOME$/Desktop/Android_Apprentice_v1.0/18-navigation-and-photos/starter/PlaceBook/app/src/main/res/drawable-xxxhdpi/ic_other.png" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                            <entry key="launcherLegacy">
+                              <value>
+                                <PersistentState>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="$USER_HOME$/Desktop/Android_Apprentice_v1.0/18-navigation-and-photos/starter/PlaceBook/app/src/main/res/drawable-xxxhdpi/ic_other.png" />
+                                      <entry key="outputName" value="ic_other" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                            <entry key="notification">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="image">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="paddingPercent" value="-5" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="$USER_HOME$/Desktop/Android_Apprentice_v1.0/18-navigation-and-photos/starter/PlaceBook/app/src/main/res/drawable-xxxhdpi/ic_other.png" />
+                                      <entry key="outputName" value="ic_other" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -30,7 +70,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputIconType" value="NOTIFICATION" />
+                            <entry key="outputIconType" value="LAUNCHER_LEGACY" />
                           </map>
                         </option>
                       </PersistentState>
